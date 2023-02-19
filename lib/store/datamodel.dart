@@ -4,8 +4,8 @@ class Product {
   double price;
   String image;
 
-  String get imageUrl =>
-      "https://firtman.github.io/coffeemasters/api/images/$image";
+  // String get imageUrl =>
+  //     "https://firtman.github.io/coffeemasters/api/images/$image";
 
   Product(
       {required this.id,
