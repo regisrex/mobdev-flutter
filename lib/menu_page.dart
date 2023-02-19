@@ -10,10 +10,23 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  Product p = Product( id: 0, name: "capuccino", price: 300, image: 'black-coffee.png');
+  Product p = Product(
+    id: 0,
+    name: "capuccino",
+    price: 300,
+    image: 'black-coffee.png',
+    description: "Come drink on the real cappuccino bean around here",
+  );
 
   @override
   Widget build(BuildContext context) {
-    return  ProductItem(product: p);
+    return ListView(
+        children: [
+          ProductItem(product: p),
+          ProductItem(product: p),
+          ProductItem(product: p),
+          ProductItem(product: p),
+        ]
+    );
   }
 }

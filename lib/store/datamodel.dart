@@ -3,15 +3,18 @@ class Product {
   String name;
   double price;
   String image;
+  String description;
 
   // String get imageUrl =>
   //     "https://firtman.github.io/coffeemasters/api/images/$image";
 
-  Product(
-      {required this.id,
-      required this.name,
-      required this.price,
-      required this.image});
+  Product({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.image,
+    required this.description,
+  });
 }
 
 class Category {

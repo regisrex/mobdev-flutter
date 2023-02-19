@@ -90,11 +90,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int selectedIndex = 0;
-  Widget currentWidgetPage  =  const OffersPage();
+  Widget currentWidgetPage = const OffersPage();
   @override
   Widget build(BuildContext context) {
-
-    switch(selectedIndex){
+    switch (selectedIndex) {
       case 0:
         setState(() {
           currentWidgetPage = const MenuPage();
@@ -110,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
           currentWidgetPage = const CartPage();
         });
         break;
-
     }
     return Scaffold(
         appBar: AppBar(title: Center(child: Image.asset("images/logo.png"))),
@@ -128,6 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   icon: Icon(Icons.shopping_cart_checkout_rounded),
                   label: "Cart"),
             ]),
-        body: currentWidgetPage );
+        body: currentWidgetPage);
   }
 }
