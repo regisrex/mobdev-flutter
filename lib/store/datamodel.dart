@@ -6,8 +6,7 @@ class Product {
   String description;
   bool isAdded;
 
-  // String get imageUrl =>
-  //     "https://firtman.github.io/coffeemasters/api/images/$image";
+  String get imageUrl =>   "https://firtman.github.io/coffeemasters/api/images/$image";
 
   Product({
     required this.id,
@@ -17,6 +16,18 @@ class Product {
     required this.description,
     required this.isAdded,
   });
+
+  factory Product.fromJson(Map<String,dynamic> json){
+    return Product(
+        id: json['id']  as int,
+        name: json['name'] as String,
+        price: json['price'] as double,
+        image: json['image'] as String,
+        description:  json['description'] as String,
+        isAdded: json['isAdded'] as bool,
+    );
+
+  }
 }
 
 class Category {
@@ -24,6 +35,15 @@ class Category {
   List<Product> products;
 
   Category({required this.name, required this.products});
+
+
+  factory Category.fromJson(Map<String,dynamic> json){
+    var products = json['products'] as Iterable<dynamic>;
+    Iterable<Product> productsFromJson = products.map((json) {
+      return Product.fromJson(json);
+    });
+    return Category(name: json['name'], products: productsFromJson as List<Product>);
+  }
 }
 
 class ItemInCart {

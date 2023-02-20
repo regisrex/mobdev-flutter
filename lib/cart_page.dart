@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_frontendmasters/utils/datamanager.dart';
 
 class CartPage extends StatefulWidget {
-  const CartPage({Key? key}) : super(key: key);
+  final Datamanager datamanager;
+  const CartPage({super.key, required this.datamanager});
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -11,6 +12,9 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Cart");
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      child: Text("Cart"),
+    );
   }
 }

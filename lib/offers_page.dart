@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontendmasters/components/offer.dart';
+import 'package:flutter_frontendmasters/utils/datamanager.dart';
 
 class OffersPage extends StatelessWidget {
-  const OffersPage({super.key});
+  final Datamanager datamanager;
+  const OffersPage({super.key , required this.datamanager});
 
   @override
   Widget build(BuildContext context) {
