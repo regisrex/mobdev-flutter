@@ -15,8 +15,6 @@ class ProductItem extends StatelessWidget {
           color: Colors.white,
           elevation: 0,
           child: Container(
-            width: 300,
-            height: 380,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
               color: Colors.amberAccent.withOpacity(0.05),
@@ -36,7 +34,7 @@ class ProductItem extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0)),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.0),
-                          child: Image.asset("images/black_coffee.png"))),
+                          child: Image.network(product.imageUrl))),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 6.0, horizontal: 10.0),
@@ -96,7 +94,7 @@ class ProductItem extends StatelessWidget {
                                   style:  ButtonStyle(
                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                        RoundedRectangleBorder(
-                                        side: BorderSide.none,
+                                        side: const BorderSide(color: Colors.white10 , width: 0.0),
                                         borderRadius: BorderRadius.circular(5.0)
                                       )
                                     )
