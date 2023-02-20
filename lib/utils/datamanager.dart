@@ -1,9 +1,11 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'dart:convert';
 import 'package:flutter_frontendmasters/store/datamodel.dart';
 import 'package:http/http.dart' as http;
 
 class Datamanager {
-  final List<Category> _menu = [];
+  List<Category>? _menu;
   List<ItemInCart> cart = [];
 
   addtoCart(Product p) {
@@ -14,7 +16,6 @@ class Datamanager {
         found = true;
       }
     }
-
     if (!found) {
       cart.add(ItemInCart(product: p, quantity: 1));
     }
@@ -38,15 +39,24 @@ class Datamanager {
 
   fetchMenu() async {
     try {
-      const String url = 'http://localhost:5555/categories';
+      const url = 'http://localhost:5555/categories';
+
       var response = await http.get(Uri.parse(url));
+
       if (response.statusCode == 200) {
+        _menu = [];
         var decodedData = jsonDecode(response.body) as List<dynamic>;
-        for (dynamic datum in decodedData) {
-          _menu?.add(Category(name: datum.name, products: datum.products));
-        }
+        // ignore: avoid_function_literals_in_foreach_calls
+        decodedData.forEach((json) {
+          Category cq = Category(name: json['name'], products: []);
+          List<dynamic> cqProducts = json['products'];
+          for (var elt in cqProducts) {
+            cq.products.add(Product.fromJson(elt));
+          }
+          _menu?.add(cq);
+        });
       } else {
-        throw Exception("Errors while loading data");
+        throw Exception("Error loading data");
       }
     } catch (e) {
       throw Exception("Errors while fetching data");
@@ -54,10 +64,9 @@ class Datamanager {
   }
 
   Future<List<Category>> getMenu() async {
-    // if(_menu == null){
-    await fetchMenu();
-    // }
-    print(_menu);
+    if (_menu!.isEmpty || _menu == Null) {
+      await fetchMenu();
+    }
     return _menu!;
   }
 }
