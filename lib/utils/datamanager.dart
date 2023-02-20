@@ -38,16 +38,15 @@ class Datamanager {
   }
 
   fetchMenu() async {
+    _menu!.clear();
     try {
-      const url = 'http://localhost:5555/categories';
-
-      var response = await http.get(Uri.parse(url));
-
+      String url = 'http://localhost:5555/categories';
+      http.Response response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         _menu = [];
         var decodedData = jsonDecode(response.body) as List<dynamic>;
-        // ignore: avoid_function_literals_in_foreach_calls
-        decodedData.forEach((json) {
+        print(decodedData);
+        decodedData.map((json) {
           Category cq = Category(name: json['name'], products: []);
           List<dynamic> cqProducts = json['products'];
           for (var elt in cqProducts) {
@@ -56,17 +55,17 @@ class Datamanager {
           _menu?.add(cq);
         });
       } else {
+        print("Fetch error");
         throw Exception("Error loading data");
       }
     } catch (e) {
+      print("Fetch error");
       throw Exception("Errors while fetching data");
     }
   }
 
   Future<List<Category>> getMenu() async {
-    if (_menu!.isEmpty || _menu == Null) {
-      await fetchMenu();
-    }
+    await fetchMenu();
     return _menu!;
   }
 }

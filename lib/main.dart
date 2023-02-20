@@ -68,10 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-          // title: Image.asset("images/logo.png")),
           title: Text(
             "CoffeeShop",
-            style: GoogleFonts.lobster(),
+            style: GoogleFonts.lobster(
+                textStyle: const TextStyle(
+              color: Colors.orange,
+            )),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
