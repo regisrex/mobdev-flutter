@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontendmasters/offers_page.dart';
-
+import 'package:flutter_frontendmasters/utils/datamanager.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'cart_page.dart';
 import 'menu_page.dart';
 
@@ -17,62 +18,12 @@ class HelloWorld extends StatelessWidget {
   }
 }
 
-class Greet extends StatefulWidget {
-  const Greet({super.key});
-
-  @override
-  State<Greet> createState() => _GreetState();
-}
-
-class _GreetState extends State<Greet> {
-  var name = "";
-
-  @override
-  Widget build(BuildContext context) {
-    // return const Text("Hello $name");
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Row(children: [
-            Text(
-              "Hello $name",
-              style: const TextStyle(fontSize: 22),
-            ),
-            const Text(
-              "😊",
-              style: TextStyle(fontSize: 22),
-            ),
-          ]),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-          child: Row(
-            children: const [
-              Text(
-                'Type your name',
-                style: TextStyle(fontSize: 14, color: Colors.black38),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-          child: TextField(
-              onChanged: (value) => setState(() {
-                    name = value;
-                  })),
-        )
-      ],
-    );
-  }
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
@@ -90,28 +41,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int selectedIndex = 0;
-  Widget currentWidgetPage = const OffersPage();
+  var dataManager = Datamanager();
+  Widget currentWidgetPage = const Center(
+    child: Text("Loading"),
+  );
   @override
   Widget build(BuildContext context) {
     switch (selectedIndex) {
       case 0:
         setState(() {
-          currentWidgetPage = const MenuPage();
+          currentWidgetPage = MenuPage(datamanager: dataManager);
         });
         break;
       case 1:
         setState(() {
-          currentWidgetPage = const OffersPage();
+          currentWidgetPage = OffersPage(datamanager: dataManager);
         });
         break;
       case 2:
         setState(() {
-          currentWidgetPage = const CartPage();
+          currentWidgetPage = CartPage(datamanager: dataManager);
         });
         break;
     }
     return Scaffold(
-        appBar: AppBar(title: Center(child: Image.asset("images/logo.png"))),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          // title: Image.asset("images/logo.png")),
+          title: Text(
+            "CoffeeShop",
+            style: GoogleFonts.lobster(),
+          ),
+        ),
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: selectedIndex,
             onTap: (index) => setState(() {
@@ -119,12 +81,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
             selectedItemColor: Colors.amber.shade900,
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.coffee), label: "Menu"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.local_offer), label: "Offers"),
+                  icon: Icon(Icons.coffee),
+                  label: "Menu",
+                  tooltip: "Available coffees"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.local_offer),
+                  label: "Offers",
+                  tooltip: "New offers 😋"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart_checkout_rounded),
-                  label: "Cart"),
+                  label: "Cart",
+                  tooltip: "View your cart"),
             ]),
         body: currentWidgetPage);
   }
