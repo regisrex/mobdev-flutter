@@ -15,18 +15,26 @@ class _MenuPageState extends State<MenuPage> {
     name: "capuccino",
     price: 300,
     image: 'black-coffee.png',
+    isAdded: false,
     description: "Come drink on the real cappuccino bean around here",
   );
+  Function dispatchWhenAdd (Product p) {
+  return (Product p){
+    setState(() {
+      p.isAdded = !p.isAdded;
+    });
+  };
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-        children: [
-          ProductItem(product: p),
-          ProductItem(product: p),
-          ProductItem(product: p),
-          ProductItem(product: p),
-        ]
+    return ListView(children: [
+      ProductItem(
+          product: p,
+          onAdd: dispatchWhenAdd(p),
+      ),
+    ]
     );
   }
 }

@@ -4,6 +4,7 @@ class Product {
   double price;
   String image;
   String description;
+  bool isAdded;
 
   // String get imageUrl =>
   //     "https://firtman.github.io/coffeemasters/api/images/$image";
@@ -14,6 +15,7 @@ class Product {
     required this.price,
     required this.image,
     required this.description,
+    required this.isAdded,
   });
 }
 
