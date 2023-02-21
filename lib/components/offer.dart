@@ -11,6 +11,7 @@ class Offer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: 300,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
         child: Card(

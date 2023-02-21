@@ -16,10 +16,10 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     if (widget.datamanager.cart.isNotEmpty) {
       return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.0),
         child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                const EdgeInsets.symmetric(vertical: 8.0),
             child: ListView.builder(
               itemCount: widget.datamanager.cart.length,
               itemBuilder: (context, index) {

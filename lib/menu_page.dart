@@ -20,7 +20,7 @@ class MenuPage extends StatelessWidget {
       builder: ((context, snapshot) {
         if (snapshot.hasData) {
           List<Category> categories = snapshot.data!;
-          if (!categories.isEmpty) {
+          if (categories.isNotEmpty) {
             return ListView.builder(
               itemCount: categories.length,
               itemBuilder: (context, index) {

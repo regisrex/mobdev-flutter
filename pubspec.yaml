@@ -32,9 +32,7 @@ dependencies:
     sdk: flutter
   http:
   google_fonts:
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  google_nav_bar: ^5.0.6
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
