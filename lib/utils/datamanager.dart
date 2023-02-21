@@ -44,6 +44,7 @@ class Datamanager {
       if (response.statusCode == 200) {
         _menu = [];
         var decodedData = jsonDecode(response.body) as List<dynamic>;
+        // ignore: avoid_function_literals_in_foreach_calls
         decodedData.forEach((json) {
           Category cq = Category(name: json['name'], products: []);
           List<dynamic> cqProducts = json['products'];
