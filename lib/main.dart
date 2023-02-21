@@ -68,12 +68,26 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-          title: Text(
-            "CoffeeShop",
-            style: GoogleFonts.lobster(
-                textStyle: const TextStyle(
-              color: Colors.orange,
-            )),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "CoffeeShop",
+                style: GoogleFonts.lobster(
+                    textStyle: const TextStyle(
+                  color: Colors.orange,
+                )),
+              ),
+              Container(
+                width: 30,
+                height: 30,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset('images/user.jpg',
+                  fit: BoxFit.cover,),
+                ),
+              )
+            ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(

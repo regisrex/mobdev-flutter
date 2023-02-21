@@ -9,9 +9,7 @@ class MenuPage extends StatelessWidget {
 
   Function dispatchWhenAdd(Product p) {
     return (Product p) {
-      //   setState(() {
-      p.isAdded = !p.isAdded;
-      //  });
+      datamanager.addtoCart(p);
     };
   }
 
@@ -22,28 +20,68 @@ class MenuPage extends StatelessWidget {
       builder: ((context, snapshot) {
         if (snapshot.hasData) {
           List<Category> categories = snapshot.data!;
-          return ListView.builder(
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(categories[index].name),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                    itemCount: categories[index].products.length,
-                    itemBuilder: (ccontext, iindex) {
-                      return ProductItem(
-                          product: categories[index].products[iindex],
-                          onAdd: dispatchWhenAdd(
-                              categories[index].products[iindex]));
-                    },
-                  )
-                ],
-              );
-            },
-          );
+          if (!categories.isEmpty) {
+            return ListView.builder(
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14.0, vertical: 20.0),
+                          child: Text(
+                            categories[index].name,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.orange,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      itemCount: categories[index].products.length,
+                      itemBuilder: (ccontext, iindex) {
+                        return ProductItem(
+                            product: categories[index].products[iindex],
+                            onAdd: dispatchWhenAdd(
+                                categories[index].products[iindex]));
+                      },
+                    )
+                  ],
+                );
+              },
+            );
+          } else {
+            return Center(
+              child: SizedBox(
+                height: 100,
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.cloud_off,
+                      color: Colors.grey,
+                      size: 40,
+                    ),
+                    Text(
+                      "Nothing on our menu!",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+          ;
         } else if (!snapshot.hasData) {
           return Center(
             child: SizedBox(

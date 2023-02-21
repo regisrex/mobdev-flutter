@@ -16,11 +16,10 @@ class ProductItem extends StatelessWidget {
           elevation: 0,
           child: Container(
             decoration: BoxDecoration(
+              color: Colors.blueGrey.withOpacity(0.05),
               borderRadius: BorderRadius.circular(20.0),
-              color: Colors.amberAccent.withOpacity(0.05),
               border: Border.all(
                   color: Colors.white10.withOpacity(0.1),
-                  width: 1.0,
                   style: BorderStyle.solid),
             ),
             child: Padding(

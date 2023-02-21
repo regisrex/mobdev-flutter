@@ -38,15 +38,13 @@ class Datamanager {
   }
 
   fetchMenu() async {
-    _menu!.clear();
     try {
       String url = 'http://localhost:5555/categories';
-      http.Response response = await http.get(Uri.parse(url));
+      var response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         _menu = [];
         var decodedData = jsonDecode(response.body) as List<dynamic>;
-        print(decodedData);
-        decodedData.map((json) {
+        decodedData.forEach((json) {
           Category cq = Category(name: json['name'], products: []);
           List<dynamic> cqProducts = json['products'];
           for (var elt in cqProducts) {
@@ -55,11 +53,9 @@ class Datamanager {
           _menu?.add(cq);
         });
       } else {
-        print("Fetch error");
         throw Exception("Error loading data");
       }
     } catch (e) {
-      print("Fetch error");
       throw Exception("Errors while fetching data");
     }
   }
