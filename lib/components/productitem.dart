@@ -48,14 +48,14 @@ class ProductItem extends StatelessWidget {
                               Text(product.name,
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 20,
+                                    fontSize: 16,
                                   )),
                             ],
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
                             child: Text(product.description,
-                                style: TextStyle(color: Colors.grey)),
+                                style: const TextStyle(color: Colors.grey)),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,7 +79,7 @@ class ProductItem extends StatelessWidget {
                                                 RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
                                                 side: const BorderSide(
-                                                    color: Colors.white10,
+                                                    //color: Colors.white10,
                                                     width: 0.0),
                                                 borderRadius:
                                                     BorderRadius.circular(5.0)))),

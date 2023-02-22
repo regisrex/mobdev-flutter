@@ -5,9 +5,9 @@ course slides: [https://firtman.github.io/intro-flutter](https://firtman.github.
 <br><br><br><br>
 
 ## Images 
-|  |   |  
-| ------ | ------- |
-| ![img1](./flutter_03.png) |![img1](./flutter_04.png) |
-| ![img1](./flutter_05.png) |![img1](./flutter_06.png) |
+|                           |                           |  
+|---------------------------|---------------------------|
+| ![img1](./flutter_03.png) | ![img1](./flutter_04.png) |
+| ![img1](./flutter_05.png) | ![img1](./flutter_06.png) |
 
 <p align="right">Feb 2023</p>
