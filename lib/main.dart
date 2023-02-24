@@ -113,15 +113,7 @@ class MyApp extends StatelessWidget {
                     (context, animation, secondaryAnimation, child) =>
                         FadeTransition(opacity: animation, child: child));
           }))
-      // builder: (context, state) => const MyHomePage())
     ]);
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     primarySwatch: Colors.orange,
-    //   ),
-    //   home: const MyHomePage(),
-    // );
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -191,26 +183,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //     currentIndex: selectedIndex,
-        //     onTap: (index) => setState(() {
-        //           selectedIndex = index;
-        //         }),
-        //     selectedItemColor: Colors.amber.shade900,
-        //     items: const [
-        //       BottomNavigationBarItem(
-        //           icon: Icon(Icons.coffee),
-        //           label: "Menu",
-        //           tooltip: "Available coffees"),
-        //       BottomNavigationBarItem(
-        //           icon: Icon(Icons.local_offer),
-        //           label: "Offers",
-        //           tooltip: "New offers 😋"),
-        //       BottomNavigationBarItem(
-        //           icon: Icon(Icons.shopping_cart_checkout_rounded),
-        //           label: "Cart",
-        //           tooltip: "View your cart"),
-        //     ]),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(10.0),
           color: Colors.white,

@@ -44,11 +44,13 @@ class _OrderItemState extends State<OrderItem> {
               Expanded(
                   flex: 1,
                   child: IconButton(
-                      color: Theme.of(context).primaryColor,
-                      onPressed: () {
-                        widget.onRemove(widget.item.product);
-                      },
-                      icon: const Icon(Icons.delete)))
+                          color: Theme.of(context).primaryColor,
+                          onPressed: () {
+                            widget.onRemove(widget.item.product);
+                          },
+                          icon: const Icon(Icons.delete)
+                        )
+                )
             ],
           ),
         ),
